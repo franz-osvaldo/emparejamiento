@@ -1,0 +1,150 @@
+/* * ARCHIVO: theme.css
+ * PROYECTO: Ecosistema Educativo - Design System Core
+ * DESCRIPCIÓN: Variables globales, reset y componentes atómicos.
+ * VERSION: 1.0.0
+ */
+
+/* =========================================
+   1. SISTEMA DE VARIABLES (TOKENS)
+   ========================================= */
+
+:root {
+  /* --- PALETA DE COLORES: MODALIDAD CLARA (DEFAULT) --- */
+  
+  /* Brand Colors */
+  --primary: #4F46E5;
+  --primary-hover: #4338CA;
+  --success: #10B981;
+
+  /* Backgrounds */
+  --bg-global: #F8FAFC;
+  --bg-card: #FFFFFF;
+
+  /* Typography Colors */
+  --text-main: #1E293B;
+  --text-muted: #64748B;
+
+  /* Borders & Dividers */
+  --border-color: #E2E8F0;
+
+  /* Utility: Shadows (Calculadas para el modo claro) */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* --- MODALIDAD OSCURA --- 
+   Se activa aplicando el atributo data-theme="dark" al tag <html> o <body> 
+*/
+[data-theme='dark'] {
+  --bg-global: #0F172A;
+  --bg-card: #1E293B;
+  --text-main: #F1F5F9;
+  --text-muted: #94A3B8;
+  --border-color: #334155;
+
+  /* Ajuste de sombras para modo oscuro (más sutiles o invisibles según preferencia) */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================================
+   2. RESET MODERNO Y BASE
+   ========================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Scroll suave para mejor experiencia de usuario en educación */
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Aplicación de variables base */
+  background-color: var(--bg-global);
+  color: var(--text-main);
+  
+  /* Transición suave al cambiar de tema (Dark/Light) */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
+  /* Renderizado de fuentes optimizado */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================
+   3. COMPONENTES ATÓMICOS
+   ========================================= */
+
+/* --- BOTÓN BASE --- */
+.btn-base {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Spacing & Sizing */
+  padding: 0.75rem 1.5rem; /* ~12px 24px */
+  border-radius: 12px;
+  
+  /* Typography */
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  
+  /* Default Style (Primary) */
+  background-color: var(--primary);
+  color: #FFFFFF; /* Texto blanco fijo para contraste con primary */
+  border: 1px solid transparent;
+  
+  /* Interactive */
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.btn-base:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px); /* Feedback táctil sutil */
+}
+
+.btn-base:active {
+  transform: translateY(0);
+}
+
+.btn-base:focus-visible {
+  box-shadow: 0 0 0 3px var(--border-color), 0 0 0 5px var(--primary);
+}
+
+/* --- CARD BASE --- */
+.card-base {
+  /* Appearance */
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px; /* Ligeramente más redondeado que los botones para contenedores */
+  
+  /* Depth */
+  box-shadow: var(--shadow-md);
+  
+  /* Spacing default */
+  padding: 1.5rem;
+  
+  /* Transición para cambio de tema */
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* =========================================
+   4. UTILIDADES DE TEXTO (Helpers)
+   ========================================= */
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-success {
+  color: var(--success);
+}

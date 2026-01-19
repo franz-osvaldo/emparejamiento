@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generador de prompts para crear cuestionarios formato GIFT en Moodle.">
+    <title>GIFT Prompt Architect</title>
+
+    <link rel="stylesheet" href="assets/theme.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="assets/theme-switcher.js"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <h1>GIFT Prompt Architect - UCB </h1>
+        <button id="theme-toggle" class="btn-base" onclick="toggleTheme()" aria-label="Alternar modo oscuro y claro">
+            🌓
+        </button>
+    </header>
+
+    <main>
+        
+        <section class="card-base">
+            <form id="promptForm">
+                
+                <div class="form-group">
+                    <label for="tema">Tema del Cuestionario</label>
+                    <input type="text" id="tema" name="tema" placeholder="Ej. Historia del Imperio Romano" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="audiencia">Audiencia Objetivo</label>
+                    <select id="audiencia" name="audiencia" required>
+                        <option value="" disabled selected>Selecciona el nivel educativo</option>
+                        <option value="primaria">Primaria</option>
+                        <option value="secundaria">Secundaria</option>
+                        <option value="universidad">Universidad</option>
+                        <option value="adultos">Adultos</option>
+                        <option value="corporativo">Corporativo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cantidad">Cantidad de Preguntas</label>
+                    <select id="cantidad" name="cantidad" required>
+                        <option value="2">2 Preguntas</option>
+                        <option value="5">5 Preguntas</option>
+                        <option value="10">10 Preguntas</option>
+                        <option value="15">15 Preguntas</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="dificultad">Nivel de Dificultad</label>
+                    <select id="dificultad" name="dificultad" required>
+                        <option value="principiante">Principiante</option>
+                        <option value="intermedio" selected>Intermedio</option>
+                        <option value="avanzado">Avanzado</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="btnGenerar" class="btn-base">
+                        Generar Prompt Maestro
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section id="resultadoContainer" class="card-base result-section" hidden aria-live="polite">
+            <h2>Tu Prompt Generado:</h2>
+            
+            <label for="outputPrompt" class="sr-only">Prompt resultante</label>
+            <textarea id="outputPrompt" readonly rows="10"></textarea>
+
+            <div class="result-actions">
+                <button type="button" id="btnCopiar" class="btn-base btn-secondary">
+                    Copiar al Portapapeles
+                </button>
+                <button type="button" id="btnDescargar" class="btn-base btn-secondary">
+                    Descargar .txt
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

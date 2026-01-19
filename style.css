@@ -1,0 +1,193 @@
+/* * ARCHIVO: style.css
+ * CONTEXTO: GIFT Prompt Architect - Hoja de estilos específica
+ * DEPENDENCIAS: Requiere assets/theme.css cargado previamente
+ */
+
+/* =========================================
+   1. LAYOUT & ESTRUCTURA
+   ========================================= */
+
+body {
+  /* Centrado vertical y horizontal del viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  
+  /* Padding lateral para móviles */
+  padding: 2rem 1rem;
+}
+
+/* Encabezado y Navegación */
+.site-header {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+/* Contenedor Principal */
+main {
+  width: 100%;
+  max-width: 700px;
+}
+
+/* =========================================
+   2. FORMULARIO & CONTROLES
+   ========================================= */
+
+#promptForm {
+  display: flex;
+  flex-direction: column;
+  /* Espaciado vertical armonioso */
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Labels sutiles pero legibles */
+label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Inputs y Selects */
+input[type="text"],
+select {
+  /* Reset y Base */
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 1rem;
+  
+  /* Transiciones suaves */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Estado Focus: Elevación visual con el color primario */
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); /* Sutil halo basado en primary */
+}
+
+/* Contenedor del botón de envío */
+.form-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#btnGenerar {
+  width: 100%;
+}
+
+/* =========================================
+   3. ÁREA DE RESULTADOS (Code Editor Look)
+   ========================================= */
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-section {
+  margin-top: 2rem;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.result-section h2 {
+  font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+/* TEXTAREA: Estilo Editor de Código / Terminal */
+#outputPrompt {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  resize: vertical; /* Solo redimensión vertical */
+  min-height: 200px;
+  
+  /* ESTÉTICA TERMINAL (Forzada incluso en modo claro) */
+  /* Usamos los valores hexadecimales del sistema (Dark bg global y Success color) */
+  background-color: #0F172A; 
+  color: #10B981; /* Verde tipo consola */
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Cuando el sistema general está en modo oscuro, ajustamos ligeramente 
+   el borde del editor para que se distinga de la tarjeta */
+[data-theme='dark'] #outputPrompt {
+  border-color: #334155; /* border-color dark mode */
+  background-color: #020617; /* Un tono más oscuro que el bg-global para profundidad */
+}
+
+/* =========================================
+   4. ACCIONES SECUNDARIAS
+   ========================================= */
+
+.result-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Estilo para botones secundarios (Outline) */
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  flex: 1; /* Distribución equitativa 50/50 */
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background-color: transparent; /* Mantenemos transparente para estilo 'ghost' */
+}
+
+/* Responsive: En móviles botones apilados */
+@media (max-width: 480px) {
+  .result-actions {
+    flex-direction: column;
+  }
+  
+  .site-header {
+    flex-direction: row; /* Mantenemos header en fila */
+  }
+}
