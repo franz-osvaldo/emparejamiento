@@ -27,26 +27,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. LÓGICA DE CONSTRUCCIÓN DEL PROMPT
     const buildPrompt = (data) => {
         // Utilizamos Template Literals para mantener el formato exacto solicitado
-        return `Actúa como un Diseñador Instruccional Senior y Experto Técnico en Moodle. Tu objetivo es generar ${data.cantidad} preguntas de tipo OPCIÓN MÚLTIPLE en formato GIFT de Moodle sobre el tema: ${data.tema}. El nivel de dificultad de cada pregunta es: ${data.dificultad}. El cuestionario esta dirigido a estudiantes de nivel educativo: ${data.audiencia}.
+        return `Actúa como un Diseñador Instruccional Senior y Experto Técnico en Moodle. Tu objetivo es generar ${data.cantidad} preguntas de tipo RELACIONAR COLUMNAS(EMPAREJAMIENTO) en formato GIFT de Moodle sobre el tema: ${data.tema}. El nivel de dificultad de cada pregunta es: ${data.dificultad}. El cuestionario esta dirigido a estudiantes de nivel educativo: ${data.audiencia}.
 
 ## FORMATO DE RESPUESTA
 1. Formato:  Formato GIFT.
 2. Presentación de la respuesta: Dentro de un bloque de código.
 3. Número de preguntas: ${data.cantidad} 
 4. Asegúrate de que cada pregunta generada esté separada de la siguiente por UNA LÍNEA EN BLANCO
-5. Usa la siguiente plantilla para tu respuesta. Las PALABRAS EN MAYÚSCULA Y ENTRE CORCHETES son mis marcadores de posición. **Reemplaza mis marcadores de posición con tu respuesta**. La plantilla es:
+5. Las parejas que se relacionan (emparejan) empiezan con el signo de igual (=) y están separadas con el símbolo "->". Deben de haber al menos tres parejas a relacionar.
+6. Usa el siguiente ejemplo para tu respuesta.
 
 ~~~
-::[TÍTULO DE LA PREGUNTA]::
-[ENUNCIADO DE LA PREGUNTA]{
-    =[RESPUESTA CORRECTA]#[FEEDBACK ACIERTO]
-    ~[RESPUESTA INCORRECTA 1]#[FEEDBACK FALLO 1]
-    ~[RESPUESTA INCORRECTA 2]#[FEEDBACK FALLO 2]
-    ~[RESPUESTA INCORRECTA 3]#[FEEDBACK FALLO 3]
-    ####[FEEDBACK GENERAL PARA LA PREGUNTA]
+Relacione los siguientes países con sus capitales correspondientes. {
+   =Canada -> Ottawa
+   =Italia  -> Roma
+   =Japón  -> Tokio
+   =India  -> Nueva Delhi
 }
-
 ~~~
+
 
 ## PROTOCOLO DE ESCAPING (CRÍTICO)
 
